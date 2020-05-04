@@ -9,14 +9,12 @@
               </div>
               <div class="link ">
                   <h6 class="caption-6">E-mail:</h6>
-                    <a href="tel:">admin@dadch-co.com</a>
+                    <a href="tel:">info-dadch@dadch-co.com</a>
               </div>
               <div class="right-desc">
                   <div class="share-link type-2 type-color-3">
-                    <a href="#" target="_blank"><i class="icon-facebook"></i></a>
-                    <a href="#" target="_blank"><i class="icon-instagram"></i></a>
-                    <a href="#" target="_blank"><i class="icon-pinterest"></i></a>
-                    <a href="#" target="_blank"><i class="icon-twitter"></i></a>
+                    <a href="https://linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.dadch-co.com&title=Venez%20consulter%20notre%20site%20de%20web%20pour%20avoir%20plus%20information" target="_blank"><i class="icon-pinterest"></i></a>
+                    <a href="https://twitter.com/share?url=http%3A%2F%2Fwww.dadch-co.com&text=Venez%20consulter%20notre%20site%20de%20web%20pour%20avoir%20plus%20information" target="_blank"><i class="icon-twitter"></i></a>
                   </div>
                   <div class="dropdown lang-list">
                       <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="caption-6 title">En</a>
@@ -34,34 +32,35 @@
 			    <i class="vertical-align"></i>
 			</button>
 			<a class="navbar-brand vertical-align" href="{{ path('homepage') }}">
-			  <img src="img/logo.png" alt="">  
+			  <img src="https://res.cloudinary.com/dadch-co-com/image/upload/v1588599524/dadch-co/logo_c8ujnm.png" alt="">  
 			</a>
 			  <div class="nav-list" id="mainNavbarCollapse">
+        {% set route_name = app.request.attributes.get('_route') %}
 				<ul class="nav navbar-nav pull-lg-right">
 					<li class="nav-item">
-						<a class="nav-link active" href="{{ path('homepage') }}">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item">
-                        <a class="nav-link" href="#">Nos études</a>
-					</li>
-					<li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+						<a {% if route_name == "homepage" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('homepage') }}">Accueil</a>
 					</li>
 					<li class="nav-item drop-link">
-                        <a class="nav-link" href="#">A propos</a>
-                        <i class="icon-down-open-big icon"></i>
+						<a {% if route_name == "home_service" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('home_service') }}">Services</a>
+            <i class="icon-down-open-big icon"></i>
 						  <ul class="dropdown-menu">
-						      <li><a href="#">About 1</a></li>
-						      <li><a href="#">About 2</a></li>
+						      <li><a href="{{ path('home_service') }}">Services</a></li>
+						      <li><a href="{{ path('home_service_methode') }}">Methodologie</a></li>
 						  </ul>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
+            <a {% if route_name == "etude" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('etude') }}">Nos études</a>
 					</li>
-                  </ul>
+					<li class="nav-item">
+            <a {% if route_name == "blog" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('blog') }}">Blog</a>
+					</li>
+					<li class="nav-item ">
+            <a {% if route_name == "a_propos" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('a_propos') }}">A propos</a>
+					</li>
+					<li class="nav-item">
+						<a {% if route_name == "home_contact" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('home_contact') }}">Contact</a>
+					</li>
+        </ul>
 			  </div>
 	     </nav>
 	   </div>   
