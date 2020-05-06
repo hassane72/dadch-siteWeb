@@ -21,7 +21,7 @@ class ContactController extends AbstractController
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid() ){
             $notify->notify($contact);
             $manager->persist($contact);
             $manager->flush();
@@ -30,6 +30,7 @@ class ContactController extends AbstractController
                 "Votre message a bien été envoyer !"
             );
         }
+
         return $this->render('contact/index.html.twig',['form' => $form->createView(),'ads' => $repos->findLastAds(3)]);
     }
 }
