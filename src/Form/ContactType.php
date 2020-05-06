@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
+
 class ContactType extends ApplicationType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -22,6 +25,14 @@ class ContactType extends ApplicationType
             ->add('email', EmailType::class, $this->getConfiguration("Email", "Saisissez votre email"))
             ->add('sujet', TextType::class, $this->getConfiguration("Sujet", "Saisissez l'objet du message"))
             ->add('message', TextareaType::class, $this->getConfiguration("Message", "Saisissez votre Message"))
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptchaUserRegistration',
+                'constraints' => [
+                    new ValidCaptcha([
+                        'message' => 'Invalid captcha, please try again',
+                    ]),
+                ],
+            ))
         ;
     }
 

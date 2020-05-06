@@ -59,6 +59,8 @@ class Contact
      */
     private $message;
 
+    protected $captchaCode;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,5 +136,15 @@ class Contact
         $this->message = $message;
 
         return $this;
+    }
+
+    public function getCaptchaCode()
+    {
+      return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+      $this->captchaCode = $captchaCode;
     }
 }
